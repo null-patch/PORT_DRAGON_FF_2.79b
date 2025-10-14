@@ -1,7 +1,3 @@
-"""Minimal gtaLib stubs for DragonFF
-These are placeholders. Implement real DFF/TXD/COL parsing here.
-"""
-
 def parse_ipl(path):
     """Very small parser stub for IPL/IDE text files.
     Returns a list of dict entries with model name and coordinates if the file exists.
