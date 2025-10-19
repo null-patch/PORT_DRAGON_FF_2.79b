@@ -2923,32 +2923,3 @@ class dff:
     #######################################################
     def __init__(self):
         self.clear()
-
-	# --- Blender bridge helpers --------------------------------------------------
-
-def import_dff_to_blender(filepath, context=None):
-    """Load DFF file into Blender 2.79 scene."""
-    import bpy, os
-    try:
-        # Real parser not yet ported – create placeholder mesh
-        bpy.ops.mesh.primitive_cube_add()
-        obj = bpy.context.active_object
-        obj.name = os.path.splitext(os.path.basename(filepath))[0]
-        print("DragonFF: placeholder DFF imported:", filepath)
-        return obj
-    except Exception as e:
-        print("DragonFF: import_dff_to_blender failed:", e)
-
-def export_dff_from_blender(context, filepath):
-    """Export selected mesh placeholder."""
-    import bpy
-    try:
-        sel = bpy.context.selected_objects
-        with open(filepath, 'w') as f:
-            f.write("# DragonFF placeholder export\n")
-            for o in sel:
-                f.write("object {}\n".format(o.name))
-        print("DragonFF: placeholder DFF exported:", filepath)
-    except Exception as e:
-        print("DragonFF: export_dff_from_blender failed:", e)
-
